@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-/* jartar.servlet.http.HttpServlet
+/* jakarta.servlet.http.HttpServlet
  * 
  * - http 프로토콜 서비스를 지원하는 추상 클래스 
  * 	-> 상속 받아서 사용
@@ -23,7 +23,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * 1. web.xml에 직접 작성하는 방법
  * 	  -> src/main/webapp/WEB-INF 폴더 내에 존재함
  * 
- * 2. @WebServlet() 어노테이션을 이요하는 방법
+ * 2. @WebServlet() 어노테이션을 이용하는 방법
  */
 
 public class ExampleServlet1 extends HttpServlet{
@@ -85,7 +85,7 @@ public class ExampleServlet1 extends HttpServlet{
 		// charset : 문자 인코딩 지정 속성
 		// UTF-8 : 유니코드를 위한 가변 길이 문자 인코딩 방식
 		//	  - 영어, 숫자, 기본 특수문자 : 1byte
-		//	  - 나머지(한글, 한문 등)	    : 3byte
+		//	  - 나머지(한글, 한문 등)	  : 3byte
 		
 		// *응답 처리 2* : 출력용 스트림 얻어오기
 		PrintWriter out = resp.getWriter();
