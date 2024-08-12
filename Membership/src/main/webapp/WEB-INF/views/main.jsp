@@ -29,10 +29,31 @@
           <td>${member.name}</td>
           <td>${member.phone}</td>
           <td>${member.amount}</td>
-          <td>${member.grade}</td>
+
+          <c:if test="${member.grade == 0}">
+            <td id="common">COMMON</td>
+          </c:if>
+
+          <c:if test="${member.grade == 1}">
+            <td id="gold">GOLD</td>
+          </c:if>
+
+          <c:if test="${member.grade == 2}">
+            <td id="diamond">DIAMOND</td>
+          </c:if>
         </tr>
       </c:forEach>
     </tbody>
   </table>
+
+  <form action="/addMember" method="GET">
+    <div>
+      이름 : <input type="text" name="inputName">
+      
+      휴대폰 번호 : <input type="number" name="inputPhone">
+
+      <button id="addMember">추가하기</button>
+    </div>
+  </form>
 </body>
 </html>

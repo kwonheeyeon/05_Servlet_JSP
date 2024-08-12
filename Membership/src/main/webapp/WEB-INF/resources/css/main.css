@@ -1,0 +1,10 @@
+table{
+  border-collapse: collapse;
+  padding: 10px;
+}
+
+#common{ color: green }
+#gold { color: gold }
+#diamond { color: silver }
+
+tr:nth-of-type(2n){ background-color: gray;}
