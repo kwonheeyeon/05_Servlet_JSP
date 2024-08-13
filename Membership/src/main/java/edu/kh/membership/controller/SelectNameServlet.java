@@ -13,14 +13,33 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/main")
-public class MainServlet extends HttpServlet{
+@WebServlet("/search")
+public class SelectNameServlet extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		String name = req.getParameter("searchName");
+		
 		try {
-			String path = "/WEB-INF/views/main.jsp";
+			MemberService service = new MemberServiceImpl();
+			List<Member> memberList = service.getMemberList();
+			List<Member> selectList = new ArrayList<Member>();
+			
+			
+			for(Member member : memberList) {
+				if(member.getName().equals(name)) {
+					selectList.add(member);
+				}
+			}
+			
+			if(selectList.isEmpty()) {
+				req.setAttribute("message", "조회 결과가 없습니다");
+			}
+			
+			req.setAttribute("selectList", selectList);
+			
+			String path="/WEB-INF/views/searchName.jsp";
 			req.getRequestDispatcher(path).forward(req, resp);
 		} catch (Exception e) {
 			e.printStackTrace();

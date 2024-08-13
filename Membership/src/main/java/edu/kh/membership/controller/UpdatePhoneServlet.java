@@ -1,9 +1,10 @@
 package edu.kh.membership.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
+import edu.kh.membership.dao.MemberDao;
+import edu.kh.membership.dao.MemberDaoImpl;
 import edu.kh.membership.dto.Member;
 import edu.kh.membership.service.MemberService;
 import edu.kh.membership.service.MemberServiceImpl;
@@ -13,16 +14,25 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/main")
-public class MainServlet extends HttpServlet{
-
+@WebServlet("/update/phone")
+public class UpdatePhoneServlet extends HttpServlet {
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		int index = Integer.parseInt(req.getParameter("index"));
+		String newPhone = req.getParameter("newPhone");
+		
 		try {
-			String path = "/WEB-INF/views/main.jsp";
-			req.getRequestDispatcher(path).forward(req, resp);
-		} catch (Exception e) {
+			MemberService service = new MemberServiceImpl();
+			List<Member> memberList = service.getMemberList();
+			
+			memberList.get(index).setPhone(newPhone);
+			
+			service.getMemberList();
+			
+			resp.sendRedirect("/selectList");
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}

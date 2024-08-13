@@ -9,6 +9,6 @@ public interface MemberService {
 
 	boolean addMember(String name, String phone) throws IOException;
 
-	List<Member> getMemberList();
+	List<Member> getMemberList() throws IOException;
 
 }

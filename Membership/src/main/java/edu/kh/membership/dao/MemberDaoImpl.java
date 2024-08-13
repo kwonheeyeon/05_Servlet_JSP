@@ -40,7 +40,9 @@ public class MemberDaoImpl implements MemberDao{
 	}
 	
 	@Override
-	public List<Member> getMemberList() {
+	public List<Member> getMemberList() throws IOException {
+		saveFile();
+		
 		return memberList;
 	}
 	

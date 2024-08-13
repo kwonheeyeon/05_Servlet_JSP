@@ -7,7 +7,7 @@ import edu.kh.membership.dto.Member;
 
 public interface MemberDao {
 
-	List<Member> getMemberList();
+	List<Member> getMemberList() throws IOException;
 
 	boolean addMember(Member member) throws IOException;
 

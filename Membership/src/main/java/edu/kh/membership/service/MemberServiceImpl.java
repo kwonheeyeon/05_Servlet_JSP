@@ -33,7 +33,7 @@ public class MemberServiceImpl implements MemberService{
 	}
 	
 	@Override
-	public List<Member> getMemberList() {
+	public List<Member> getMemberList() throws IOException {
 		return dao.getMemberList();
 	}
 }
