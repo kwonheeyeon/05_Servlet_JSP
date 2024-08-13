@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>회원 관리 프로그램</title>
 
-  <link rel="stylesheet" href="/WEB-INF/resources/css/main.css">
+  <link rel="stylesheet" href="/resources/css/main.css">
 </head>
 <body>
   <h3>회원 정보</h3>
@@ -28,7 +28,7 @@
 
           <td>${member.name}</td>
           <td>${member.phone}</td>
-          <td>${member.amount}</td>
+          <td id="amount">${member.amount}</td>
 
           <c:if test="${member.grade == 0}">
             <td id="common">COMMON</td>
@@ -46,14 +46,57 @@
     </tbody>
   </table>
 
-  <form action="/addMember" method="GET">
-    <div>
-      이름 : <input type="text" name="inputName">
-      
-      휴대폰 번호 : <input type="number" name="inputPhone">
+  <hr>
 
-      <button id="addMember">추가하기</button>
+  <h4>회원 추가</h4>
+
+  <form action="/member/add" method="GET" id="addMember">
+    <div>
+      <table>
+        <tr>
+          <td>이름</td>
+          <td><input type="text" name="inputName"></td>
+        </tr>
+
+        <tr>
+          <td>휴대폰 번호</td>
+          <td><input type="number" name="inputPhone"></td>
+        </tr>
+
+        <tr>
+          <td class="btn" colspan="2"><button id="addMember">추가하기</button></td>
+        </tr>
+      </table>
     </div>
   </form>
+
+  <hr>
+
+  <h4>회원 정보 조회(이름으로 검색)</h4>
+
+  <form action="/member/select" method="GET" id="selectMember">
+    <div>
+      <table>
+        <tr>
+          <td>조회할 이름</td>
+          <td><input type="text"></td>
+        </tr>
+
+        <tr>
+          <td class="btn" colspan="2"><button id="selectMember">조회하기</button></td>
+        </tr>
+      </table>
+    </div>
+  </form>
+
+  <c:if test="${not empty sessionScope.message}" >
+    <script>
+      alert("${message}");
+    </script>
+
+    <c:remove var="message" scope="session" />
+  </c:if>
+
+  <script src="/resources/js/main.js"></script>
 </body>
 </html>
