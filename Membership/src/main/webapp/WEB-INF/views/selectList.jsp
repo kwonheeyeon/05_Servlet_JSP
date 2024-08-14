@@ -30,7 +30,7 @@
     <tbody>
     <c:forEach items="${memberList}" var="member" varStatus="vs">
       <tr>
-        <th>${vs.count}</th>
+        <th id="index">${vs.count}</th>
         <td><a href="/update/member?index=${vs.count-1}">${member.name}</a></td>
         <td>${member.phone}</td>
         <td><a href="/update/amount?index=${vs.count-1}">${member.amount}원</a></td>
@@ -45,7 +45,7 @@
           <td>다이아</td> 
         </c:if>
 
-        <td><button id="">탈퇴</button></td>
+        <td><button id="withdrawalBtn">탈퇴</button></td>
       </tr>
     </c:forEach>
     </tbody>
@@ -54,6 +54,6 @@
 
   <a href="/main">돌아가기</a>
 
-
+  <script src="/resources/js/withdrawal.js"></script>
 </body>
 </html>
